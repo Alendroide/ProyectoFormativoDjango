@@ -60,7 +60,7 @@ class ProductosControl(models.Model):
     def __str__(self):
         return self.nombre
     
-class UsoProductoControl(models.Model):
+class UsoProductosControl(models.Model):
     fk_ProductoControl = models.ForeignKey(ProductosControl, on_delete=models.SET_NULL, null=True)
     fk_Control = models.ForeignKey(Controles, on_delete=models.SET_NULL, null=True)
     cantidadProducto = models.IntegerField()
