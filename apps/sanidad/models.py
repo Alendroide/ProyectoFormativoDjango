@@ -1,6 +1,6 @@
 from django.db import models
-from apps.trazabilidad import Plantaciones
-class TipoPlaga(models.model):
+
+class TipoPlaga(models.Model):
     nombre = models.CharField(max_length=30)
     descripcion = models.TextField()
     img = models.CharField(max_length=255)
@@ -8,7 +8,7 @@ class TipoPlaga(models.model):
     def __str__(self):
         return self.nombre
     
-class Plaga(models.model):
+class Plaga(models.Model):
     fk_Tipo = models.ForeignKey(TipoPlaga, on_delete=models.SET_NULL, null=True)
     nombre = models.CharField(max_length=30)
     descripcion = models.TextField()
@@ -19,15 +19,15 @@ class Plaga(models.model):
     
 class Afecciones(models.Model):
     estado_choises = [
-        ('ST','Sin tratar'),
-        ('EC','En control'),
-        ('EL','Eliminada')
+        ('ST','ST'),
+        ('EC','EC'),
+        ('EL','EL')
     ]
     
-    fk_Plantacion = models.ForeignKey(Plantaciones, on_delete=models.SET_NULL, null=True)
+    fk_Plantacion = models.IntegerField()
     fk_Plaga = models.ForeignKey(Plaga, on_delete=models.SET_NULL, null=True)
     fechaEncuentro = models.DateField()
-    estado = models.CharField(max_length=30, choises=estado_choises, default='ST')
+    estado = models.CharField(max_length=30, choices=estado_choises, default='ST')
     
     def __str__(self):
         return self.fechaEncuentro
