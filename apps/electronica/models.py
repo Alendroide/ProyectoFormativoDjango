@@ -1,8 +1,6 @@
 from django.db import models
 import math
 
-
-# Modelos principales
 class Lote(models.Model):
     nombre = models.CharField(max_length=15)
     descripcion = models.TextField()
