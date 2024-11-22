@@ -16,30 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
-from apps.sanidad.api.router import router_tipoPlaga
-from apps.sanidad.api.router import router_plaga
-from apps.sanidad.api.router import router_afecciones
-from apps.sanidad.api.router import router_tiposControl
-from apps.sanidad.api.router import router_controles
-from apps.sanidad.api.router import router_productosControl
-from apps.sanidad.api.router import router_usoProductosControl
-
-
+from apps.sanidad.api.router import routerSanidad
+from apps.finanzas.api.router import routerFinanzas
+from apps.electronica.api.router import routerElectronica
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include(router_lote.urls)),
-    path('api/', include(router_era.urls)),
-    path('api/', include(router_sensor.urls)),
-    path('api/', include(router_HumedadTerreno.urls)),
-    path('api/', include(router_ph.urls))
-
-    path('api/',include(router_tipoPlaga.urls)),
-    path('api/',include(router_plaga.urls)),
-    path('api/',include(router_afecciones.urls)),
-    path('api/',include(router_tiposControl.urls)),
-    path('api/',include(router_controles.urls)),
-    path('api/',include(router_productosControl.urls)),
-    path('api/',include(router_usoProductosControl.urls)),
-    
+    path('api/',include(routerSanidad.urls)),
+    path('api/',include(routerFinanzas.urls)),
+    path('api/',include(routerElectronica.urls)),
 ]
