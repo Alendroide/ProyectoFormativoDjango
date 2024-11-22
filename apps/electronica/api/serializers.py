@@ -8,21 +8,20 @@ class LoteSerializer(ModelSerializer):
 
 class ErasSerializer(ModelSerializer):
     class Meta:
-        model = Lote
+        model = Eras
         fields = '__all__'
 
 class SensorSerializer(ModelSerializer):
     class Meta:
-        model = Lote
+        model = Sensor
         fields = '__all__'
 
 class HumedadTerrenoSerializer(ModelSerializer):
     class Meta:
-        model = Lote
+        model = HumedadTerreno
         fields = '__all__'
 
 class PhSerializer(ModelSerializer):
     class Meta:
-        model = Lote
+        model = PH
         fields = '__all__'
-

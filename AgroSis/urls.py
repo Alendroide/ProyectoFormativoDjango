@@ -16,14 +16,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from apps.electronica.api.router import *
+from apps.electronica.api.router import router_Electronica
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include(router_lote.urls)),
-    path('api/', include(router_era.urls)),
-    path('api/', include(router_sensor.urls)),
-    path('api/', include(router_HumedadTerreno.urls)),
-    path('api/', include(router_ph.urls))
+    path('api/', include(router_Electronica.urls)),
 
 ]
