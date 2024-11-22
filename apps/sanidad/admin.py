@@ -1,11 +1,5 @@
 from django.contrib import admin
-from apps.sanidad.models import TipoPlaga
-from apps.sanidad.models import Plaga
-from apps.sanidad.models import Afecciones
-from apps.sanidad.models import TiposControl
-from apps.sanidad.models import Controles
-from apps.sanidad.models import ProductosControl
-from apps.sanidad.models import UsoProductosControl
+from apps.sanidad.models import TipoPlaga, Plaga, Afecciones, TiposControl, Controles, ProductosControl, UsoProductosControl
 
 admin.site.register(TipoPlaga)
 admin.site.register(Plaga)
