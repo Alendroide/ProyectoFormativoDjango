@@ -84,6 +84,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'agrosisdjango',
+        'NAME': 'agrosisdjango',
         'USER': 'postgres',
         'PASSWORD': '0001083',
         'HOST': 'localhost',
