@@ -39,3 +39,13 @@ class SensorConsumer(AsyncWebsocketConsumer):
             )
         except Sensor.DoesNotExist:
             pass
+    
+    async def sensor_update(self, event):
+
+        sensor_id = event['sensor_id']
+        valor = event['valor']
+
+        await self.send(text_data=json.dumps({
+            'sensor_id': sensor_id,
+            'valor': valor,
+        }))
