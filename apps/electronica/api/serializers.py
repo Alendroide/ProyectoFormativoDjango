@@ -28,4 +28,10 @@ class SensorSerializer(ModelSerializer):
 
     class Meta:
         model = Sensor
+<<<<<<< HEAD
         fields = ['id', 'fk_lote', 'fk_lote_id', 'fecha', 'tipo', 'tipo_display', 'valor']
+=======
+        fields = ['id', 'fk_lote', 'fk_lote_id', 'fecha', 'tipo', 'tipo_display', 'valor']
+
+
+>>>>>>> ddf90bd1fb13fb075085733659c9a00045103c7e
