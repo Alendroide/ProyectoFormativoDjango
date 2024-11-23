@@ -18,10 +18,13 @@ from django.contrib import admin
 from django.urls import path, include
 from apps.electronica.api.routers.lote_router import *
 from apps.electronica.api.routers.era_router import *
+from apps.electronica.api.routers.sensor_router import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router_Lote.urls)),
     path('api/', include(router_era.urls)),
-    
+    path('api/', include(router_sensor.urls)),
+
+
 
 ]
