@@ -14,8 +14,9 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
 from django.contrib import admin
-from django.urls import path,include
+from django.urls import path, include
 from apps.sanidad.api.router import router_tipoPlaga
 from apps.sanidad.api.router import router_plaga
 from apps.sanidad.api.router import router_afecciones
@@ -25,15 +26,13 @@ from apps.sanidad.api.router import router_productosControl
 from apps.sanidad.api.router import router_usoProductosControl
 
 
-
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('api/',include(router_tipoPlaga.urls)),
-    path('api/',include(router_plaga.urls)),
-    path('api/',include(router_afecciones.urls)),
-    path('api/',include(router_tiposControl.urls)),
-    path('api/',include(router_controles.urls)),
-    path('api/',include(router_productosControl.urls)),
-    path('api/',include(router_usoProductosControl.urls)),
-    
+    path("admin/", admin.site.urls),
+    path("api/", include(router_tipoPlaga.urls)),
+    path("api/", include(router_plaga.urls)),
+    path("api/", include(router_afecciones.urls)),
+    path("api/", include(router_tiposControl.urls)),
+    path("api/", include(router_controles.urls)),
+    path("api/", include(router_productosControl.urls)),
+    path("api/", include(router_usoProductosControl.urls)),
 ]
