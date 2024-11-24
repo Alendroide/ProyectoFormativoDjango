@@ -17,10 +17,10 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, include
-
+from apps.sanidad.api.routers.tipoPlagaRouter import router_tipoPlaga
 
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    
+    path("api/", include(router_tipoPlaga.urls)),
 ]
