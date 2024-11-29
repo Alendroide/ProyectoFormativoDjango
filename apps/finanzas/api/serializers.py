@@ -32,10 +32,7 @@ class SerializerVentas(ModelSerializer):
         fields = '__all__'
 
 #serializer activiades.
-class SerializerActividades(ModelSerializer):
-    class Meta:
-        model = Actividades
-        fields = '__all__'
+
 
 #serializer insumos.
 class SerializerInsumos(ModelSerializer):
