@@ -3,9 +3,7 @@ from apps.finanzas.api.serializers import *
 from apps.finanzas.models import *
 
 #modelvieset de tipos de desecho
-class ModelViewSetTiposDesecho(ModelViewSet):
-    queryset = TiposDesecho.objects.all()
-    serializer_class = SerializerTiposDesecho 
+
 
 #modelviewset de cultivos
 class ModelViewSetCultivos(ModelViewSet):
