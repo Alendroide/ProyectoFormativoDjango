@@ -20,11 +20,7 @@ class SerializerDesechos(ModelSerializer):
         fields = '__all__'
 
 #serializer cosechas.
-class SerializerCosechas(ModelSerializer):
-    class Meta:
-        model = Cosechas
-        fields = '__all__'
-    
+
 #serializer ventas.
 class SerializerVentas(ModelSerializer):
     class Meta:
