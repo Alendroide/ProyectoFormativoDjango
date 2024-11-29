@@ -62,16 +62,16 @@ urlpatterns = [
     #Routers | EMPEZAR A PARTIR DE ESTA LÍNEA
     
     #Electronica
-    path('/api',router_era.urls),
-    path('/api',router_Lote.urls),
-    path('/api',router_sensor.urls),
+    path('api/',include(router_era.urls)),
+    path('api/',include(router_Lote.urls)),
+    path('api/',include(router_sensor.urls)),
     
     #Trazabilidad
-    path('/api',EspeciesRouter.urls),
-    path('/api',TiposEspecieRouter.urls),
-    path('/api',HerramientasRouter.urls),
-    path('/api',PlantacionesRouter.urls),
-    path('/api',SemillerosRouter.urls),
-    path('/api',UsosHerramientasRouter.urls),
+    path('api/',include(EspeciesRouter.urls)),
+    path('api/',include(TiposEspecieRouter.urls)),
+    path('api/',include(HerramientasRouter.urls)),
+    path('api/',include(PlantacionesRouter.urls)),
+    path('api/',include(SemillerosRouter.urls)),
+    path('api/',include(UsosHerramientasRouter.urls)),
     
 ]
