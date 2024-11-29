@@ -5,21 +5,10 @@ from apps.users.models import Usuario
     
 
 # Modelo de la tabla desechos.
-class Desechos(models.Model):
-    fk_Cultivo = models.ForeignKey(Cultivos, on_delete = models.SET_NULL, null= True)
-    fk_TipoDesecho = models.ForeignKey(TiposDesecho, on_delete=models.SET_NULL, null= True)
-    nombre = models.CharField(max_length=50)
-    descripcion = models.TextField(max_length=200)
-    def __str__(self):
-        return self.nombre
+
     
 # Modelo de la tabla cosechas.
-class Cosechas(models.Model):
-    fk_Cultivo = models.ForeignKey(Cultivos, on_delete = models.SET_NULL, null= True)
-    unidades = models.IntegerField()
-    fecha = models.DateField(auto_now=False)
-    def __str__(self):
-        return self.fecha
+
 
 
 # Modelo de la tabla ventas.
