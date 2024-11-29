@@ -1,5 +1,12 @@
 from django.contrib import admin
-from apps.finanzas.models import TiposDesecho, Cultivos, Desechos, Cosechas, Ventas, Actividades, Insumos, UsosProductos
+from apps.finanzas.api.models.tiposDesecho import TiposDesecho
+from apps.finanzas.api.models.cultivos import Cultivos
+from apps.finanzas.api.models.desechos import Desechos
+from apps.finanzas.api.models.cosechas import Cosechas
+from apps.finanzas.api.models.ventas import Ventas
+from apps.finanzas.api.models.actividades import Actividades
+from apps.finanzas.api.models.insumos import Insumos
+from apps.finanzas.api.models.usosProductos import UsosProductos
 # Register your models here.
 
 admin.site.register(TiposDesecho)
