@@ -4,7 +4,7 @@ from apps.sanidad.api.serializers.tipoPlagaSerializer import TipoPlagaModelSeria
 
 
 class PlagaModelSerializer(ModelSerializer):
-    tipoPlaga = TipoPlagaModelSerializer(read_only=True)
+    tipoPlaga = TipoPlagaModelSerializer(source='fk_Tipo',read_only=True)
     class Meta:
         model = Plaga
         fields = "__all__"
