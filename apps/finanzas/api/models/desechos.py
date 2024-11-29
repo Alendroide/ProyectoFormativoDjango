@@ -1,6 +1,6 @@
 from django.db import models
 from apps.finanzas.api.models.cultivos import Cultivos
-from apps.finanzas.api.models.tipoDesechos import TiposDesecho
+from apps.finanzas.api.models.tiposDesecho import TiposDesecho
 
 class Desechos(models.Model):
     fk_Cultivo = models.ForeignKey(Cultivos, on_delete = models.SET_NULL, null= True)
