@@ -5,10 +5,10 @@ from rest_framework import status
 from apps.electronica.api.models.lote import Lote
 from apps.electronica.api.models.sensor import Sensor
 from apps.electronica.api.serializers.Lote_Serializer import LoteSerializer
+from decimal import Decimal
 import math
 
 class LoteView(ModelViewSet):
-
     queryset = Lote.objects.all()
     serializer_class = LoteSerializer
 
@@ -30,33 +30,27 @@ class LoteView(ModelViewSet):
 
     def _calcular_evapotranspiracion(self, lote):
         try:
+            temperatura = Decimal(lote.sensores.filter(tipo='TEM').latest('fecha').valor)
+            humedad_relativa = Decimal(lote.sensores.filter(tipo='HUM_A').latest('fecha').valor)
+            radiacion_solar = Decimal(lote.sensores.filter(tipo='LUM').latest('fecha').valor)
+            velocidad_viento = Decimal(lote.sensores.filter(tipo='VIE').latest('fecha').valor)
 
-            temperatura = self._obtener_ultimo_valor(lote, 'TEM')
-            humedad_relativa = self._obtener_ultimo_valor(lote, 'HUM_A')
-            radiacion_solar = self._obtener_ultimo_valor(lote, 'LUM')
-            velocidad_viento = self._obtener_ultimo_valor(lote, 'VIE')
+            velocidad_viento = velocidad_viento * Decimal(1000) / Decimal(3600)  
+            radiacion_solar = radiacion_solar * Decimal(0.0864)
 
-            velocidad_viento = velocidad_viento * 1000 / 3600  
-            radiacion_solar = radiacion_solar * 0.0864  
+            elevacion = Decimal(1000)
 
-            elevacion = 1000  
-            es = 0.6108 * math.exp((17.27 * temperatura) / (temperatura + 237.3))
-            ea = es * (humedad_relativa / 100)
-            delta = (4098 * es) / ((temperatura + 237.3) ** 2)
-            gamma = 0.665 * 10 ** -3 * (101.3 * ((293 - (0.0065 * elevacion)) / 293) ** 5.26)
+            es = Decimal(0.6108) * (Decimal(2.718281828459045) ** ((Decimal(17.27) * temperatura) / (temperatura + Decimal(237.3))))
+            ea = es * (humedad_relativa / Decimal(100))
 
-            ET0 = (0.408 * delta * radiacion_solar +
-                   gamma * (900 / (temperatura + 273)) * velocidad_viento * (es - ea)) / \
-                  (delta + gamma * (1 + 0.34 * velocidad_viento))
+            delta = (Decimal(4098) * es) / ((temperatura + Decimal(237.3)) ** 2)
+
+            gamma = Decimal(0.665 * 10 ** -3) * (Decimal(101.3) * ((Decimal(293) - (Decimal(0.0065) * elevacion)) / Decimal(293)) ** Decimal(5.26))
+
+            ET0 = (Decimal(0.408) * delta * radiacion_solar +
+                   gamma * (Decimal(900) / (temperatura + Decimal(273))) * velocidad_viento * (es - ea)) / \
+                  (delta + gamma * (Decimal(1) + Decimal(0.34) * velocidad_viento))
 
             return round(ET0, 2)
-        except ValueError as e:
-            return str(e)
-        except Exception as e:
-            return f"Error inesperado: {str(e)}"
-
-    def _obtener_ultimo_valor(self, lote, tipo_sensor):
-        sensor = lote.sensores.filter(tipo=tipo_sensor).order_by('-fecha').first()
-        if not sensor:
-            raise ValueError(f"No se encontró un sensor de tipo '{tipo_sensor}' asociado al lote.")
-        return sensor.valor
+        except Sensor.DoesNotExist:
+            return "No hay datos suficientes para calcular la evapotranspiración."
