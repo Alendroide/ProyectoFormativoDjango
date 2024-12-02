@@ -15,7 +15,10 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path,include
+from django.urls import path, include 
+from apps.electronica.api.routers.era_router import *
+from apps.electronica.api.routers.lote_router import *  
+from apps.electronica.api.routers.sensor_router import * 
 from apps.sanidad.api.router import routerSanidad
 from apps.finanzas.api.router import routerFinanzas
 from apps.electronica.api.router import routerElectronica
@@ -39,10 +42,9 @@ schema_view = get_schema_view(
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include(router_lote.urls)),
     path('api/', include(router_era.urls)),
     path('api/', include(router_sensor.urls)),
-    path('api/', include(router_HumedadTerreno.urls)),
-    path('api/', include(router_ph.urls))
+    path('api/', include(router_Lote.urls)),
+
 
 ]
