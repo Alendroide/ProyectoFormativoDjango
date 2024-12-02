@@ -42,9 +42,9 @@ schema_view = get_schema_view(
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include(router_era.urls)),
-    path('api/', include(router_sensor.urls)),
-    path('api/', include(router_Lote.urls)),
+    path('eras/', include(router_era.urls)),  
+    path('sensor/', include(router_sensor.urls)),  
+    path('api/', include(router_Lote.urls)),  
 
 
 ]
