@@ -83,9 +83,9 @@ WSGI_APPLICATION = 'AgroSis.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'agrosis',
+        'NAME': 'AgroSisDjango',
         'USER': 'postgres',
-        'PASSWORD': 'adso2024',
+        'PASSWORD': '123',
         'HOST': 'localhost',
         'PORT': '5432',
     }

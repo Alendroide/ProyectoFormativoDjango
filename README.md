@@ -4,4 +4,5 @@ Estos módulos contienen:
   - Finanzas
   - Sanidad
   - Trazabilidad
+
 El sistema contiene a su vez un sistema de autenticación con usuarios personalizados, agregando campos al mismo a parte de los que Django crea por defecto.
