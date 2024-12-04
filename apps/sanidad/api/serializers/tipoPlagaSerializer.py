@@ -6,3 +6,4 @@ class TipoPlagaModelSerializer(ModelSerializer):
         model = tipoPlaga
         fields = "__all__"
 
+    
