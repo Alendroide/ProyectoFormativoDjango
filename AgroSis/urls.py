@@ -19,22 +19,11 @@ from django.contrib import admin
 from django.urls import path,include
 
 #IMPORTACION DE SWAGGER DOCS GENERATOR
-from apps.sanidad.api.router import routerSanidad
-from apps.finanzas.api.routers.routerActividades import routerActividades
-from apps.finanzas.api.routers.routerCosechas import routerCosechas
-from apps.finanzas.api.routers.routerCultivos import routerCultivos
-from apps.finanzas.api.routers.routerDesechos import routerDesechos
-from apps.finanzas.api.routers.routerHorasMensuales import routerHorasMensuales
-from apps.finanzas.api.routers.routerInsumos import routerInsumos
-from apps.finanzas.api.routers.routerPasantes import routerPasantes
-from apps.finanzas.api.routers.routerTiposDesechos import routerTiposDesecho
-from apps.finanzas.api.routers.routerUsosProductos import routerUsosProductos
-from apps.finanzas.api.routers.routerVentas import routerVentas
-from apps.electronica.api.router import routerElectronica
 from django.urls import re_path
 from rest_framework import permissions
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
+
 
 schema_view = get_schema_view(
    openapi.Info(
@@ -64,6 +53,21 @@ from apps.trazabilidad.api.routers.SemillerosRouter import SemillerosRouter
 from apps.trazabilidad.api.routers.TiposEspeciesRouter import TiposEspecieRouter
 from apps.trazabilidad.api.routers.UsosHerramientasRouter import UsosHerramientasRouter
 
+#Sanidad
+
+
+#Finanzas
+from apps.finanzas.api.routers.routerActividades import routerActividades
+from apps.finanzas.api.routers.routerCosechas import routerCosechas
+from apps.finanzas.api.routers.routerCultivos import routerCultivos
+from apps.finanzas.api.routers.routerDesechos import routerDesechos
+from apps.finanzas.api.routers.routerHorasMensuales import routerHorasMensuales
+from apps.finanzas.api.routers.routerInsumos import routerInsumos
+from apps.finanzas.api.routers.routerPasantes import routerPasantes
+from apps.finanzas.api.routers.routerTiposDesechos import routerTiposDesecho
+from apps.finanzas.api.routers.routerUsosProductos import routerUsosProductos
+from apps.finanzas.api.routers.routerVentas import routerVentas
+
 urlpatterns = [
     #SWAGGER Y ADMIN
     path('admin/', admin.site.urls),
@@ -86,7 +90,6 @@ urlpatterns = [
     path('api/',include(SemillerosRouter.urls)),
     path('api/',include(UsosHerramientasRouter.urls)),
     
-    path('api/',include(routerSanidad.urls)),
     path('finanzas/api/',include(routerActividades.urls)),
     path('finanzas/api/',include(routerCosechas.urls)),
     path('finanzas/api/',include(routerCultivos.urls)),
@@ -97,5 +100,4 @@ urlpatterns = [
     path('finanzas/api/',include(routerTiposDesecho.urls)),
     path('finanzas/api/',include(routerUsosProductos.urls)),
     path('finanzas/api/',include(routerVentas.urls)),
-    path('api/',include(routerElectronica.urls)),
 ]
