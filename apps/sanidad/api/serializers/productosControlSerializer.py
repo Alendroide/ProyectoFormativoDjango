@@ -1,5 +1,5 @@
 from rest_framework.serializers import  ModelSerializer;
-from apps.sanidad.api.serializers.productosControlSerializer import ProductosControl;
+from apps.sanidad.api.models.ProductosControlModel import ProductosControl;
 
 class ProductosControlModelSerializer(ModelSerializer):
     class Meta:
