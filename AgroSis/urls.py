@@ -23,6 +23,7 @@ from apps.sanidad.api.routers.afeccionesRouter import router_afecciones;
 from apps.sanidad.api.routers.tiposControlRouter import router_tiposControl;
 from apps.sanidad.api.routers.controlesRouter import router_controles;
 from apps.sanidad.api.routers.productosControlRouter import router_productosControl;
+from apps.sanidad.api.routers.UsosProductosControlRouter import router_usoProductosControl;
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -32,4 +33,6 @@ urlpatterns = [
     path("api/", include(router_tiposControl.urls)),
     path("api/", include(router_controles.urls)),
     path("api/", include(router_productosControl.urls)),
+    path("api/", include(router_usoProductosControl.urls)),
+    
 ]
