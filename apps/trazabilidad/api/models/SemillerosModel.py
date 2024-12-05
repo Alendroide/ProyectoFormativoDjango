@@ -1,8 +1,8 @@
 from django.db import models
-import EspeciesModel
+from .EspeciesModel import Especies
 
 class Semilleros(models.Model):
-    fk_Especie = models.ForeignKey(EspeciesModel,on_delete=models.SET_NULL,null=True)
+    fk_Especie = models.ForeignKey(Especies,on_delete=models.SET_NULL,null=True)
     unidades = models.IntegerField()
     fechaSiembra = models.DateField()
     fechaEstimada = models.DateField()
