@@ -1,5 +1,4 @@
 from rest_framework.routers import DefaultRouter
-from apps.sanidad.api.models.tipoPlaga import tipoPlaga
 from apps.sanidad.api.views.tipoPlagaViews import TipoPlagaModelViewSet
 
 router_tipoPlaga = DefaultRouter()
