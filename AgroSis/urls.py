@@ -17,7 +17,16 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 from apps.sanidad.api.router import routerSanidad
-from apps.finanzas.api.router import routerFinanzas
+from apps.finanzas.api.routers.routerActividades import routerActividades
+from apps.finanzas.api.routers.routerCosechas import routerCosechas
+from apps.finanzas.api.routers.routerCultivos import routerCultivos
+from apps.finanzas.api.routers.routerDesechos import routerDesechos
+from apps.finanzas.api.routers.routerHorasMensuales import routerHorasMensuales
+from apps.finanzas.api.routers.routerInsumos import routerInsumos
+from apps.finanzas.api.routers.routerPasantes import routerPasantes
+from apps.finanzas.api.routers.routerTiposDesechos import routerTiposDesecho
+from apps.finanzas.api.routers.routerUsosProductos import routerUsosProductos
+from apps.finanzas.api.routers.routerVentas import routerVentas
 from apps.electronica.api.router import routerElectronica
 from django.urls import re_path
 from rest_framework import permissions
@@ -43,6 +52,15 @@ urlpatterns = [
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
     path('api/',include(routerSanidad.urls)),
-    path('api/',include(routerFinanzas.urls)),
+    path('finanzas/api/',include(routerActividades.urls)),
+    path('finanzas/api/',include(routerCosechas.urls)),
+    path('finanzas/api/',include(routerCultivos.urls)),
+    path('finanzas/api/',include(routerDesechos.urls)),
+    path('finanzas/api/',include(routerHorasMensuales.urls)),
+    path('finanzas/api/',include(routerInsumos.urls)),
+    path('finanzas/api/',include(routerPasantes.urls)),
+    path('finanzas/api/',include(routerTiposDesecho.urls)),
+    path('finanzas/api/',include(routerUsosProductos.urls)),
+    path('finanzas/api/',include(routerVentas.urls)),
     path('api/',include(routerElectronica.urls)),
 ]
