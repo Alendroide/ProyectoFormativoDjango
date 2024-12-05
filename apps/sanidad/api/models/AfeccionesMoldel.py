@@ -10,4 +10,4 @@ class Afecciones(models.Model):
     estado = models.CharField(max_length=30, choices=estado_choises, default="ST")
 
     def __str__(self):
-        return self.fechaEncuentro
+        return self.estado
