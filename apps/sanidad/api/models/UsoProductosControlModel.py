@@ -9,4 +9,4 @@ class UsoProductosControl(models.Model):
     cantidadProducto = models.IntegerField()
 
     def __str__(self):
-        return self.cantidadProducto
+        return self.fk_ProductoControl.nombre
