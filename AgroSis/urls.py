@@ -52,6 +52,15 @@ from apps.trazabilidad.api.routers.SemillerosRouter import SemillerosRouter
 from apps.trazabilidad.api.routers.TiposEspeciesRouter import TiposEspecieRouter
 from apps.trazabilidad.api.routers.UsosHerramientasRouter import UsosHerramientasRouter
 
+#Sanidad
+from apps.sanidad.api.routers.tipoPlagaRouter import router_tipoPlaga
+from apps.sanidad.api.routers.plagaRouter import router_plaga
+from apps.sanidad.api.routers.afeccionesRouter import router_afecciones
+from apps.sanidad.api.routers.tiposControlRouter import router_tiposControl
+from apps.sanidad.api.routers.controlesRouter import router_controles
+from apps.sanidad.api.routers.productosControlRouter import router_productosControl
+from apps.sanidad.api.routers.UsosProductosControlRouter import router_usoProductosControl
+
 urlpatterns = [
     #SWAGGER Y ADMIN
     path('admin/', admin.site.urls),
@@ -74,4 +83,12 @@ urlpatterns = [
     path('api/',include(SemillerosRouter.urls)),
     path('api/',include(UsosHerramientasRouter.urls)),
     
+    #Sanidad
+    path("api/", include(router_tipoPlaga.urls)),
+    path("api/", include(router_plaga.urls)),
+    path("api/", include(router_afecciones.urls)),
+    path("api/", include(router_tiposControl.urls)),
+    path("api/", include(router_controles.urls)),
+    path("api/", include(router_productosControl.urls)),
+    path("api/", include(router_usoProductosControl.urls)),
 ]
