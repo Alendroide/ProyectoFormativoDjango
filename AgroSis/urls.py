@@ -15,12 +15,13 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 
-from django.contrib import admin
-from django.urls import path, include
-from apps.sanidad.api.routers.tipoPlagaRouter import router_tipoPlaga
-from apps.sanidad.api.routers.plagaRouter import router_plaga
-from apps.sanidad.api.routers.afeccionesRouter import router_afecciones
-from apps.sanidad.api.routers.tiposControlRouter import router_tiposControl
+from django.contrib import admin;
+from django.urls import path, include;
+from apps.sanidad.api.routers.tipoPlagaRouter import router_tipoPlaga;
+from apps.sanidad.api.routers.plagaRouter import router_plaga;
+from apps.sanidad.api.routers.afeccionesRouter import router_afecciones;
+from apps.sanidad.api.routers.tiposControlRouter import router_tiposControl;
+from apps.sanidad.api.routers.controlesRouter import router_controles;
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -28,4 +29,5 @@ urlpatterns = [
     path("api/", include(router_plaga.urls)),
     path("api/", include(router_afecciones.urls)),
     path("api/", include(router_tiposControl.urls)),
+    path("api/", include(router_controles.urls)),
 ]
