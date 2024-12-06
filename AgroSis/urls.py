@@ -62,9 +62,6 @@ from apps.sanidad.api.routers.controlesRouter import router_controles
 from apps.sanidad.api.routers.productosControlRouter import router_productosControl
 from apps.sanidad.api.routers.UsosProductosControlRouter import router_usoProductosControl
 
-#Sanidad
-
-
 #Finanzas
 from apps.finanzas.api.routers.routerActividades import routerActividades
 from apps.finanzas.api.routers.routerCosechas import routerCosechas
@@ -107,14 +104,16 @@ urlpatterns = [
     path("api/", include(router_controles.urls)),
     path("api/", include(router_productosControl.urls)),
     path("api/", include(router_usoProductosControl.urls)),
-    path('finanzas/api/',include(routerActividades.urls)),
-    path('finanzas/api/',include(routerCosechas.urls)),
-    path('finanzas/api/',include(routerCultivos.urls)),
-    path('finanzas/api/',include(routerDesechos.urls)),
-    path('finanzas/api/',include(routerHorasMensuales.urls)),
-    path('finanzas/api/',include(routerInsumos.urls)),
-    path('finanzas/api/',include(routerPasantes.urls)),
-    path('finanzas/api/',include(routerTiposDesecho.urls)),
-    path('finanzas/api/',include(routerUsosProductos.urls)),
-    path('finanzas/api/',include(routerVentas.urls)),
+
+    #Finanzas
+    path('api/',include(routerActividades.urls)),
+    path('api/',include(routerCosechas.urls)),
+    path('api/',include(routerCultivos.urls)),
+    path('api/',include(routerDesechos.urls)),
+    path('api/',include(routerHorasMensuales.urls)),
+    path('api/',include(routerInsumos.urls)),
+    path('api/',include(routerPasantes.urls)),
+    path('api/',include(routerTiposDesecho.urls)),
+    path('api/',include(routerUsosProductos.urls)),
+    path('api/',include(routerVentas.urls)),
 ]
