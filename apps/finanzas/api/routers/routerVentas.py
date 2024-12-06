@@ -1,5 +1,5 @@
 from rest_framework.routers import DefaultRouter
-from apps.finanzas.api.serializers.serializerVentas import SerializerVentas
+from apps.finanzas.api.views.viewVentas import ViewVentas
 
 routerVentas = DefaultRouter()
-routerVentas.register(prefix="Ventas",viewset=SerializerVentas,basename="Ventas")
+routerVentas.register(prefix="Ventas",viewset=ViewVentas,basename="Ventas")

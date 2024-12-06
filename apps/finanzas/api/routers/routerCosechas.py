@@ -1,5 +1,5 @@
 from rest_framework.routers import DefaultRouter
-from apps.finanzas.api.serializers.serializerCosechas import SerializerCosechas
+from apps.finanzas.api.views.viewCosechas import ViewCosechas
 
 routerCosechas = DefaultRouter()
-routerCosechas.register(prefix="cosechas",viewset=SerializerCosechas,basename="cosechas")
+routerCosechas.register(prefix="cosechas",viewset=ViewCosechas,basename="cosechas")
