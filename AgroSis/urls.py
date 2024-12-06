@@ -24,6 +24,8 @@ from rest_framework import permissions
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 
+#JWT
+from rest_framework_simplejwt import views as jwt_views
 
 schema_view = get_schema_view(
    openapi.Info(
@@ -116,4 +118,10 @@ urlpatterns = [
     path('api/',include(routerTiposDesecho.urls)),
     path('api/',include(routerUsosProductos.urls)),
     path('api/',include(routerVentas.urls)),
+
+    # Ruta para obtener el token JWT
+    path('api/token/', jwt_views.TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    
+    # Ruta para refrescar el token JWT
+    path('api/token/refresh/', jwt_views.TokenRefreshView.as_view(), name='token_refresh'),
 ]
