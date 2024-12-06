@@ -18,16 +18,20 @@ class SensorConsumer(AsyncWebsocketConsumer):
             self.room_group_name,
             self.channel_name
         )
-    
-    async def receive(self, text_data):
-        text_data_json = json.loads(text_data)
-        sensor_id = text_data_json['sensor_id']
-        sensor_value = text_data_json['valor']
 
+    async def receive(self, text_data):
         try:
+            data = json.loads(text_data)
+            sensor_id = data.get('sensor_id')
+            valor = data.get('valor')
+
+            if not sensor_id or valor is None:
+                raise ValueError("Faltan datos en el mensaje")
+
             sensor = Sensor.objects.get(id=sensor_id)
-            sensor.valor = sensor_value
+            sensor.valor = valor
             sensor.save()
+
 
             await self.channel_layer.group_send(
                 self.room_group_name,
@@ -38,14 +42,16 @@ class SensorConsumer(AsyncWebsocketConsumer):
                 }
             )
         except Sensor.DoesNotExist:
-            pass
-    
+            await self.send(text_data=json.dumps({
+                'error': f"El sensor con ID {sensor_id} no existe."
+            }))
+        except ValueError as e:
+            await self.send(text_data=json.dumps({'error': str(e)}))
+        except json.JSONDecodeError:
+            await self.send(text_data=json.dumps({'error': "Formato JSON inválido"}))
+
     async def sensor_update(self, event):
-
-        sensor_id = event['sensor_id']
-        valor = event['valor']
-
         await self.send(text_data=json.dumps({
-            'sensor_id': sensor_id,
-            'valor': valor,
+            'sensor_id': event['sensor_id'],
+            'valor': event['valor'],
         }))
