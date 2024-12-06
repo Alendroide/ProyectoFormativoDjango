@@ -4,6 +4,6 @@ from apps.sanidad.api.serializers.plagaSerializer import PlagaModelSerializer
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
 class PlagaModelViewSet(ModelViewSet):
-    permission_classes = IsAuthenticatedOrReadOnly
+    permission_classes = [IsAuthenticatedOrReadOnly]
     serializer_class = PlagaModelSerializer
     queryset = Plaga.objects.all()
