@@ -5,8 +5,8 @@ from apps.users.models import Usuario
 class Actividades(models.Model):
     ESTADO_CHOICES = [
         ('AS',"Asignada"),
-        ('CO',"Proceso"),
-        ('CA',"Finalizada")
+        ('CO',"Completada"),
+        ('CA',"Cancelada")
     ]
     fk_Cultivo = models.ForeignKey(Cultivos, on_delete = models.SET_NULL, null= True)
     fk_Usuario=models.ForeignKey(Usuario, on_delete= models.SET_NULL,null=True)
