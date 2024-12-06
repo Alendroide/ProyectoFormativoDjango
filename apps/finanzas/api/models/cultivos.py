@@ -1,5 +1,5 @@
 from django.db import models
-from apps.trazabilidad.api.models.especies import Especies
+from apps.trazabilidad.api.models.EspeciesModel import Especies
 class Cultivos(models.Model):
     fk_Especie = models.ForeignKey(Especies,on_delete=models.SET_NULL, null=True)
     nombre = models.CharField(max_length=30)
