@@ -24,6 +24,7 @@ from rest_framework import permissions
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 
+
 schema_view = get_schema_view(
    openapi.Info(
       title="Snippets API",
@@ -61,6 +62,21 @@ from apps.sanidad.api.routers.controlesRouter import router_controles
 from apps.sanidad.api.routers.productosControlRouter import router_productosControl
 from apps.sanidad.api.routers.UsosProductosControlRouter import router_usoProductosControl
 
+#Sanidad
+
+
+#Finanzas
+from apps.finanzas.api.routers.routerActividades import routerActividades
+from apps.finanzas.api.routers.routerCosechas import routerCosechas
+from apps.finanzas.api.routers.routerCultivos import routerCultivos
+from apps.finanzas.api.routers.routerDesechos import routerDesechos
+from apps.finanzas.api.routers.routerHorasMensuales import routerHorasMensuales
+from apps.finanzas.api.routers.routerInsumos import routerInsumos
+from apps.finanzas.api.routers.routerPasantes import routerPasantes
+from apps.finanzas.api.routers.routerTiposDesechos import routerTiposDesecho
+from apps.finanzas.api.routers.routerUsosProductos import routerUsosProductos
+from apps.finanzas.api.routers.routerVentas import routerVentas
+
 urlpatterns = [
     #SWAGGER Y ADMIN
     path('admin/', admin.site.urls),
@@ -91,4 +107,14 @@ urlpatterns = [
     path("api/", include(router_controles.urls)),
     path("api/", include(router_productosControl.urls)),
     path("api/", include(router_usoProductosControl.urls)),
+    path('finanzas/api/',include(routerActividades.urls)),
+    path('finanzas/api/',include(routerCosechas.urls)),
+    path('finanzas/api/',include(routerCultivos.urls)),
+    path('finanzas/api/',include(routerDesechos.urls)),
+    path('finanzas/api/',include(routerHorasMensuales.urls)),
+    path('finanzas/api/',include(routerInsumos.urls)),
+    path('finanzas/api/',include(routerPasantes.urls)),
+    path('finanzas/api/',include(routerTiposDesecho.urls)),
+    path('finanzas/api/',include(routerUsosProductos.urls)),
+    path('finanzas/api/',include(routerVentas.urls)),
 ]
