@@ -2,5 +2,6 @@ from rest_framework.serializers import ModelSerializer
 from ..models.SemillerosModel import Semilleros
 
 class SemillerosSerializer(ModelSerializer):
-    model = Semilleros
-    fields = '__all__'
+    class Meta:
+        model = Semilleros
+        fields = '__all__'

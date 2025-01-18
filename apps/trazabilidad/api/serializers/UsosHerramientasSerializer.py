@@ -2,5 +2,6 @@ from rest_framework.serializers import ModelSerializer
 from ..models.UsosHerramientasModel import UsosHerramientas
 
 class UsosHerramientasSerializer(ModelSerializer):
-    model = UsosHerramientas
-    fields = '__all__'
+    class Meta:
+        model = UsosHerramientas
+        fields = '__all__'

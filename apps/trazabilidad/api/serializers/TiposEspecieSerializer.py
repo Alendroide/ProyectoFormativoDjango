@@ -2,5 +2,6 @@ from rest_framework.serializers import ModelSerializer
 from ..models.TiposEspecieModel import TiposEspecie
 
 class TiposEspecieSerializer(ModelSerializer):
-    model = TiposEspecie
-    fields = '__all__'
+    class Meta:
+        model = TiposEspecie
+        fields = '__all__'
