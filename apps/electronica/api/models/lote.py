@@ -1,7 +1,7 @@
 from django.db import models
 
 class Lote(models.Model):
-    nombre = models.CharField(max_length=15)
+    nombre = models.CharField(max_length=15, unique=True) 
     descripcion = models.TextField()
     tamX = models.PositiveSmallIntegerField()
     tamY = models.PositiveSmallIntegerField()
