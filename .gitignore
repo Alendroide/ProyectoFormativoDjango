@@ -1,0 +1,13 @@
+__pycache__/ 
+*.pyc 
+migrations/ 
+apps/finanzas/api/models/ 
+apps/finanzas/api/routers/ 
+apps/finanzas/api/serializers/ 
+apps/finanzas/api/views/ 
+apps/sanidad/api/models/ 
+apps/sanidad/api/routers/ 
+apps/sanidad/api/serializers/ 
+apps/sanidad/api/views/ 
+apps/sanidad/api/__pycache__/ 
+apps/trazabilidad/migrations/ 
